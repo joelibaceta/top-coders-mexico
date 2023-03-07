@@ -7,3 +7,4 @@ author: "Joel Ibaceta"
 locale: "es-MX"
 plugins:
   - jekyll-seo-tag
+  - jekyll-dotenv

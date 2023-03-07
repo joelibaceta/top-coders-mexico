@@ -16,8 +16,11 @@ module Jekyll
             http.use_ssl = true
 
             request = Net::HTTP::Get.new(parsed_uri)
-            request["Accept"] = 'application/vnd.github.cloak-preview'
-            request["Authorization"] = 'Bearer ' + ENV['GH_ACCESS_TOKEN']
+
+            if ENV['GH_ACCESS_TOKEN'] != nil
+                request["Accept"] = 'application/vnd.github.cloak-preview'
+                request["Authorization"] = 'Bearer ' + ENV['GH_ACCESS_TOKEN']
+            end
 
             response = http.request(request)
 
@@ -111,6 +114,8 @@ module Jekyll
             
             raw_response = make_get_request(uri)
             users = JSON.parse(raw_response)
+
+            p "Found #{users["total_count"]} users"
 
             users["items"].each do |user|
                 

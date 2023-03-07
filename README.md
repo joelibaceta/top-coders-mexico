@@ -44,3 +44,7 @@ La pagina esta basada en Jekyll para la generacion de contenido estatico y de Tr
 - Definir las siguientes variables de entorno: `CLIENT_ID` y `CLIENT_SECRET` puedes obtener tus credenciales de la siguiente manera https://developer.github.com/v3/guides/basics-of-authentication/
 
 
+### Usando docker
+
+- Construir la imagen: `docker build -t topcoders .`
+- Generar el sitio estatico `docker run --rm -v $(pwd)/.site:/usr/src/app/.site --name topcodersmx topcoders`
