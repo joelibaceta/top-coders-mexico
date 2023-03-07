@@ -8,7 +8,7 @@ on:
   schedule:
     - cron: "0 0 * * *"
 env:
-  ENV_LOCATION: "location:lima+location:peru"
+  ENV_LOCATION: "location:mexico"
 
 jobs:
   build:
