@@ -17,7 +17,7 @@ module Jekyll
 
             request = Net::HTTP::Get.new(parsed_uri)
 
-            if ENV['GH_ACCESS_TOKEN'] != nil
+            if ENV['GH_ACCESS_TOKEN'].to_s != ""
                 request["Accept"] = 'application/vnd.github.cloak-preview'
                 request["Authorization"] = 'Bearer ' + ENV['GH_ACCESS_TOKEN']
             end
