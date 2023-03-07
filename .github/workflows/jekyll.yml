@@ -1,0 +1,30 @@
+name: Jekyll site CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  schedule:
+    - cron: "0 0 * * *"
+env:
+  ENV_LOCATION: "location:lima+location:peru"
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the site in the jekyll/builder container
+      run: |
+        docker run  -e GH_ACCESS_TOKEN="${{ secrets.GH_ACCESS_TOKEN }}" -e LOCATION="$ENV_LOCATION" \
+        -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
+        jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --future"  
+
+    - name: Deploy to gh-pages
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        branch: gh-pages # The branch the action should deploy to.
+        folder: ${{ github.workspace }}/_site # The folder the action should deploy.
