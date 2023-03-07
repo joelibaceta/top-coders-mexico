@@ -1,9 +1,9 @@
-title: Top Coders Peru
+title: Top Coders Mexico
 theme: minima
-tagline: "Peruvian developers ranking based on github stats"
-description: "Peruvian developers ranking based on github stats"
-url: "https://joelibaceta.github.io/top-coders-peru/"
+tagline: "Mexican developers ranking based on github stats"
+description: "Mexican developers ranking based on github stats"
+url: "https://joelibaceta.github.io/top-coders-mexico/"
 author: "Joel Ibaceta"
-locale: "es-PE"
+locale: "es-MX"
 plugins:
   - jekyll-seo-tag
